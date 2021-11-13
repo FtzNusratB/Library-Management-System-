@@ -1,0 +1,416 @@
+public interface IBookOperations
+{
+    void insertBook(Book b);
+	void removeBook(Book b);
+	Book getBook(int bookId);
+	void ShowAllBooks();
+}
+	
+
+public interface IStudentOperations
+{
+    void insertStudent(Student s);
+	void removeStudent(Student s);
+	Student getStudent(String studentId);
+	void ShowAllStudents();
+}
+	
+
+public interface ITeacherOperations
+{
+	void insertTeacher(Teacher t);
+	void removeTeacher(Teachert);
+	Teacher getTeacher(String teacherId);
+	void showAllTeacher();
+}
+
+
+
+public class Librarian
+{
+	String name;
+	String LibrarianId;
+	double salary;
+	int age;
+	patron p;
+	
+	
+	
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void setSalary(double salary)
+	{
+		this.salary=salary;
+	}
+	public double getSalary()
+	{
+		return salary;
+	}
+	public void setAge(int age)
+	{
+		this.age=age;
+	}
+	public int getAge()
+	{
+		return age;
+	}
+	    
+		
+	public void generateFine(patron p,double ammount)
+	{
+		System.out.println(p.id+"  "+p.name+"  "+p.departmentName+"  "+p.email+"  "+p.contactNo+"  "+p.address+"  "+p.amount);
+		System.out.println("Amount:"+amount);
+	}
+}
+		
+
+
+       *****//Book class Exist//*****
+
+public class Book
+{
+	int id;
+	String title;
+	String subtitle;
+	String authorName;
+	String publisherName;
+	double price;
+	int noOfCopy;
+	
+	public void setId(int id)
+	{
+		this.id=id;
+	}
+	public int getId()
+	{
+		return id;
+	}
+	public void setTitle(String title)
+	{
+		this.title=title;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+    public void setSubTitle(String subtitle)
+	{
+		this.subtitle=subtitle;
+	}
+	public String getSubTitle()
+	{
+	    return subtitle;
+	}
+	public void setAuthorName(String authorName)
+	{
+		this.authorName=authorName;
+	}
+	public String getAuthorName()
+	{
+		return authorName;
+	}
+	public void setPublisherName(String publisherName)
+	{
+		this.publisherName=publisherName;
+	}
+	public String getpublisherName()
+	{
+		return publisherName;
+	}
+	public void setPrice(double price)sw
+	{
+		this.price=price;
+	}
+	public double getPrice()
+	{
+		return price;
+	}
+	public void setNoOfCopy(int noOfCopy)
+	{
+		this.noOfCopy=noOfCopy;
+	}
+	public int getNoOfCopy()
+	{
+		return noOfCopy;
+	}
+
+}
+
+
+            
+
+public interface IBasicOperations
+{
+	void borrow(Patron p,Book b);
+	void Return(Patron p,Book b);
+	void fine(Patron p,double amount);
+}
+
+
+
+           *****//Patron class Exist//****
+
+public abstract class Patron implements IBasicOperations
+{
+	String id;
+	String name;
+	String departmentName;
+	String email;
+	String contactNo;
+	String address;
+	double amount;
+	patron p;
+	Book b;
+	
+	public void setId(String id)
+	{
+		this.id=id;
+	}
+	public String getId()
+	{
+		return id;
+	}
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setDepartmentName(String departmentName)
+	{
+		this.departmentName=departmentName;
+	}
+	public String getDepartmentName()
+	{
+		return departmentName;
+	}
+	public void setEmail(String email)
+	{
+		this.email=email;
+	}
+	public String getEmail()
+	{
+		return email;
+	}
+	public void setContactNo(String contactNo)
+	{
+		this.contactNo=contactNo;
+	}
+	public String getContactNo()
+	{
+		return contactNo;
+	}
+	public void setAddress(String address)
+	{
+		this.address=address;
+	}
+	public String getAddress()
+	{
+		return address;
+	}
+	public void setAmount(double amount)
+	{
+		this.amount=amount;
+	}
+	public double getAmount()
+	{
+		return amount;
+	}
+	abstract void showInfo();
+	
+
+	public void borrow(patron p,Book b)
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Book:"+b);
+	}
+	public void Return(Patron p,Book b)
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Book:"+b);
+	}
+	public void fine(patron p,double amount)
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Amount:"+amount);
+	}
+		
+	
+}
+
+
+
+          ****//Student class Exist//*****
+
+public class Student extends Patron
+{
+	String guardianName;
+	String guardianContactNo;
+	
+	public void setGuardianName(String guardianName)
+	{
+		this.guardianName=guardianName;
+	}
+	public String getGuardianName()
+	{
+		return guardianName;
+	}
+	public void setGuardianContactNo(String guardianContactNo)
+	{
+		this.guardianContactNo=guardianContactNo;
+	}
+	public String getGuardianContactNo()
+	{
+		return guardianContactNo;
+	}
+	public void showInfo()
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Book:"+b);
+		System.out.println("Amount:"+amount);
+	}
+}
+
+
+
+          ********//Teacher class Exist//*****
+
+public class Teacher extends Patron
+{
+	int officeRoomNo;
+	
+	public void setOfficeRoomNo(int officeRoomNo)
+	{
+		this.officeRoomNo=officeRoomNo;
+	}
+	public int getOfficeRoomNo()
+	{
+		return officeRoomNo;
+	}
+	public void showInfo()
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Book:"+b);
+		System.out.println("Amount:"+amount);
+	}
+}
+
+
+
+                         *********//Library class Exist//************
+
+import java.lang.*;
+import java.util.Scanner;
+import java.io.*;
+
+public class Library implements IBookOperations,ITeacherOperations,IStudentOpertions
+{
+	String libraryName;
+	String address;
+	Student students[5];
+	Teacher teachers[5];
+	Book books[10];
+	int noOfBooks;
+	Librarian librarian;
+	Patron p;
+	
+	public Library(String libraryName,String address,Student Students,Teacher teachers,Book books,int noOfBooks,Librarian librarians,Patron p)
+	{
+		this.libraryName=libraryName;
+		this.address=address;
+		this.students=students;
+		this.teachers=teachers;
+		this.books=books;
+		this.noOfBooks=onOfBooks;
+		this.librarians=librarians;
+		this.p=p;
+	}
+	public void display()
+	{
+		System.out.println(libraryName+"  "+address+"  "+noOfBooks);
+		System.out.println(students.guardianName+"  "+students.guardianContactNo);
+		System.out.println(teachers.officeRoomNo+);
+		System.out.println(books.id+"  "+books.title+"  "+books.subtitle+"  "+books.authorName+"  "+books.publisherName+"  "+books.price+"  "+books.noOfCopy);
+		System.out.println(noOfBooks+);
+	    System.out.println(librarian.name+"  "+librarian.LibrarianId+"  "+librarian.salary+"  "+librarian.age);
+		System.out.println(p.id+"  "+p.name+"  "+p.departmentName+"  "+p.email+"  "+p.contactNo+"  "+p.address+"  "+p.amount);
+	}
+	
+	public void insertBook(Book b)
+	{
+		System.out.println("InsertBook:"+b);
+	}
+	public void removeBook(Book b)
+	{
+		System.out.println("RemoveBook:"+b);
+	}
+	public Book getBook(int bookId)
+	{
+		System.out.println("GetBook:"+bookId);
+	}
+	public void showALLBooks()
+	{
+		System.out.println("ALLBooks:"+books);
+	}
+	
+	public void insertStudent(Student s);
+	{
+		System.out.println("InsertStudent:"+s);
+	}
+	public void removeStudent(Student s)
+	{
+		System.out.println("RemoveStudent:"+s);
+	}
+	public Student getStudent(String studentId)
+	{
+		System.out.println("GetStudent:"+studentId);
+	}
+	public void showAllStudent()
+	{
+		System.out.println("AllStudent:"+students);
+	}
+	public void insertTeacher(Teacher t)
+	{
+		System.out.println("InsertTeacher:"+t);
+	}
+	public void removeTeacher(Teacher t)
+	{
+		System.out.println("RemoveTeacher:"+t);
+	}
+	public Teacher getTeacher(String teacherId)
+	{
+		System.out.println("GetTeacher:"+teacherId);
+	}
+	public void showAllTeachers()
+	{
+		System.out.println("AllTeacher:"+teachers);
+	}
+	
+    public void showInfo()
+	{
+		System.out.println("Patron:"+p);
+		System.out.println("Book:"+b);
+		System.out.println("Amount:"+amount);
+	}
+}
+
+
+
+                       *****//Main class//*****
+public class Start
+{
+	public static void main(String[]args)
+{
+                Scanner sc = new Scanner(System.in);
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader bfr = new BufferedReader(isr);
+		
